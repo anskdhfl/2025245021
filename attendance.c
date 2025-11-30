@@ -78,3 +78,32 @@ void show_stats() {
     printf("=====================\n\n");
 
 }
+
+void search_by_name() {
+    if (count == 0) {
+        printf("검색할 출결 정보가 없습니다.\n\n");
+        return;
+    }
+
+    char key[32];
+    printf("검색할 학생 이름: ");
+    scanf("%31s", key);
+
+    int found = 0;
+
+    for (int i = 0; i < count; i++) {
+        if (strcmp(list[i].name, key) == 0) {
+            printf("%d) %s | %s | %s | ",
+                i + 1, list[i].date, list[i].name, list[i].course);
+
+            if (list[i].status == STATUS_PRESENT) printf("출석\n");
+            else if (list[i].status == STATUS_LATE) printf("지각\n");
+            else printf("결석\n");
+
+            found = 1;
+        }
+    }
+
+    if (!found)
+        printf("해당 학생의 출결 정보가 없습니다.\n");
+}
