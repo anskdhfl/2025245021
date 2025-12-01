@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 #include "attendance.h"
 
 Attendance list[MAX_ATT];
@@ -96,14 +98,14 @@ void search_by_name() {
             printf("%d) %s | %s | %s | ",
                 i + 1, list[i].date, list[i].name, list[i].course);
 
-            if (list[i].status == STATUS_PRESENT) printf("출석\n");
-            else if (list[i].status == STATUS_LATE) printf("지각\n");
-            else printf("결석\n");
+            if (list[i].status == STATUS_PRESENT) printf("출석\n\n");
+            else if (list[i].status == STATUS_LATE) printf("지각\n\n");
+            else printf("결석\n\n");
 
             found = 1;
         }
     }
 
-    if (!found)
+    if (found == 0)
         printf("해당 학생의 출결 정보가 없습니다.\n");
 }
